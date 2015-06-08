@@ -10,10 +10,10 @@
 
 Инструкция по использованию:
 
-Сперва задайте nickname в Client -> User settings
+Сперва задайте Username:         Client -> User settings
 
-Для создания сервера: Server -> Server settings
+Для создания сервера:            Server -> Server settings
 
 Для создания комнаты на сервере: Server -> New room
 
-Для подключения к комнате Client -> Connect to room
+Для подключения к комнате:       Client -> Connect to room
