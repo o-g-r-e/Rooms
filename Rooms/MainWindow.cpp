@@ -25,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 	connect(server, SIGNAL(createdNewRoom(QHostAddress, qint16, QString)), client, SLOT(onConnectToServer(QHostAddress, qint16, QString)));
 
+	connect(tabs, SIGNAL(tabClosed(QString)), client, SLOT(onDeleteClientRoom(QString)));
+	connect(tabs, SIGNAL(tabClosed(QString)), server, SLOT(onDeleteRoom(QString)));
+
 	newRoomDialog = new NewRoomDialog(this);
 	connect(newRoomDialog, SIGNAL(addRoom(QString)), server, SLOT(onCreateRoom(QString)));
 
@@ -40,8 +43,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 	connect(userSettingsDialog->ui.userNameLineEdit, SIGNAL(textChanged(const QString &)), client, SLOT(onSetNickName(const QString &)));
 	connect(userSettingsDialog->ui.userNameLineEdit, SIGNAL(textChanged(const QString &)), userSettingsDialog, SLOT(onUserNickNameChanged(const QString &)));
 	connect(userSettingsDialog, SIGNAL(userNickNameValid(bool)), ui.actionConnect_to_room, SLOT(setEnabled(bool)));
-
-	connect(tabs, SIGNAL(tabClosed(QString)), client, SLOT(onDeleteClientRoom(QString)));
 }
 
 MainWindow::~MainWindow()

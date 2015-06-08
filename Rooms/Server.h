@@ -46,6 +46,7 @@ private slots:
 	//void onClientConnectToRoom();
 	void onRead();
 	void onCreateRoom(QString name);
+	void onDeleteRoom(QString name);
 	void onDisconnectRoomClient(QString userNickName);
 	void onDisconnectClient();
 	void onServerAccessError(QAbstractSocket::SocketError socketError);

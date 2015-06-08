@@ -157,6 +157,19 @@ void Server::onCreateRoom(QString name)
 	emit createdNewRoom(address, port, name);
 }
 
+void Server::onDeleteRoom(QString name)
+{
+	if (this->rooms.count() > 0)
+	{
+		foreach(QTcpSocket* socket, this->rooms.value(name)->getClientSockets())
+		{
+			socket->close();
+		}
+
+		this->rooms.remove(name);
+	}
+}
+
 void Server::sendMessage(QTcpSocket* socket, Message message)
 {
 	QDataStream dataStream(socket);
